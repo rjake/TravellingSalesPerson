@@ -1,4 +1,4 @@
-﻿Postal Code,Postal Code (group),Region,State,Latitude (generated),Longitude (generated),Quantity
+postalcode,group,region,state,lat,lon,quantity
 19901,NE3,East,Delaware,39.1787,-75.4737,22
 19805,NE3,East,Delaware,39.744,-75.6079,120
 19711,NE3,East,Delaware,39.7135,-75.7399,225
