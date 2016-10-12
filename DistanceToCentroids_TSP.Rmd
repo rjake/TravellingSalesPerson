@@ -1,0 +1,213 @@
+---
+title: "Distances to Centroids & TSP across Regions"
+author: "Jake Riley, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, error = F, message = F, fig.width = 12)
+```
+
+###Set workspace
+```{r}
+library(tidyverse)
+library(RCurl)
+library(dbscan)
+library(ggmap)
+library(geosphere)
+library(TSP)
+library(gridExtra)
+
+#setwd("C:/Users/jriley215/Desktop/Projects/ANKUR FFO")
+#setwd("J:/ANKUR FFO")
+```
+
+###Read in locations
+```{r}
+Locations <- 
+    getURL("https://raw.githubusercontent.com/rjake/TravellingSalesPerson/master/superstore.csv")%>%
+    read.csv(text=., stringsAsFactors = F)%>%  # the dot means "this data" in the pipe
+    as.data.frame()     
+
+#identify the following variables
+    Locations$ID    <- Locations$postalcode #the unique identifier for each site
+    Locations$lon   <- Locations$lon        #Y coord
+    Locations$lat   <- Locations$lat        #X coord
+    Locations$group <- Locations$group      #column to group by geographically
+    Locations$value <- Locations$quantity   #weight for clustering
+
+```
+
+###Read in Airports
+```{r}
+Airports <- 
+        getURL("https://raw.githubusercontent.com/rjake/TravellingSalesPerson/master/airports.csv")%>%
+        read.csv(text=., stringsAsFactors = F)%>%  # the dot means "this data" in the pipe
+        as.data.frame()        
+```
+
+###Find central location
+Create centers by finding the centroids of each group, then find the closest site to the centroid, then calculate distances to that central location
+```{r}
+Regions <- 
+    Locations %>%
+    select(group) %>%
+    distinct() %>% 
+    arrange(group)
+
+Centroid <- 
+    Locations %>%
+    select(ID, group, lon, lat) %>% 
+    group_by(group) %>% 
+        mutate(lon.C = median(lon),
+               lat.C = median(lat)) %>% 
+        ungroup() %>% 
+    #get distances to centroid of region
+    rowwise() %>% 
+        mutate(dist.mi = distGeo(p1 = c(lon, lat), 
+                                 p2 = c(lon.C, lat.C))/1609.34) %>%
+        ungroup() %>% 
+    #identify central facility
+    group_by(group) %>% 
+        arrange(dist.mi) %>% 
+        mutate(Ord = row_number()) %>% 
+        ungroup() %>%
+    mutate(Central = ifelse(Ord == 1, "Central", "Other")) %>% 
+    #assign central facility as navigation point (lon.C, lat.C)
+    group_by(group) %>% 
+        arrange(Ord) %>% 
+        mutate(lon.C = ifelse(Ord == 1, lon, 0),
+               lat.C = ifelse(Ord == 1, lat, 0)) %>%
+        mutate(lon.C = min(lon.C),
+               lat.C = max(lat.C)) %>% 
+        ungroup() %>% 
+    #get distances for each site to central facility
+    rowwise() %>% 
+        mutate(dist.mi = distGeo(p1 = c(lon, lat), 
+                                 p2 = c(lon.C, lat.C))/1609.34) %>% 
+                                 #convert from meters to miles
+        ungroup()
+
+```
+
+
+###Create maps
+Create three maps within a forloop: 
+
+* straight lines to central location
+* shortest path through all points
+* cluster points (using dbscan)
+
+```{r eval = T}
+#for loop to generate maps
+for(i in 1:nrow(Regions)){
+
+    RegionLoop <- 
+        filter(Centroid, group == Regions$group[i]) %>%
+        left_join(select(Locations, ID, value), by = "ID")
+
+    #creates shortest routes
+        df <- select(RegionLoop, lon,lat)
+        tsp <- TSP(dist(df))
+        tour <- solve_TSP(tsp, method="nearest_insertion", control=list(rep=10))
+        path.tsp <- unname(tour)
+        RegionLoop$Path <- as.integer(tour)
+    
+    #plot(lat~lon, df[path.tsp,], type="b",asp=1)
+
+    #map elements that repeat across maps    
+        map_airports <- geom_point(data = Airports, aes(x = lon, y = lat), 
+                                   size = 3, alpha = .9, color = "black", 
+                                   fill = "#b983ff", shape = 24)
+        
+        map_locations <- geom_point(data = RegionLoop, 
+                                    aes(x=lon, y=lat, size = value, fill = Central), 
+                                    alpha = .9, color = "black", shape = 21)
+        
+        map_legend <- theme(legend.position = "bottom")
+        
+        map_locations_colors <- scale_fill_manual(values = c("red", "#00C0AF"))#B983FF
+        
+        all_states <- map_data("state")
+        
+        all_counties <- map_data("county")
+    
+        basemap <- 
+            ggplot() +
+            geom_polygon( data=all_counties, aes(x=long, y=lat, group = group),
+                          colour="grey85", fill="GREY95") +
+            geom_polygon( data=all_states, aes(x=long, y=lat, group = group),
+                          colour="grey60", fill = NA, size = .5)+
+            coord_map(projection="mercator", 
+                      xlim=c(min(RegionLoop$lon)-1, max(RegionLoop$lon)+1),
+                      ylim=c(min(RegionLoop$lat)-1, max(RegionLoop$lat)+1)) 
+
+    #plots 1 & 2
+    plot1 <- #map of distance to most central location
+       basemap +
+       geom_leg(data = RegionLoop,
+               aes(x = lon, xend = lon.C,
+                   y = lat, yend = lat.C),
+                color = "#E58700", size = 2, alpha = .5) +
+        geom_leg(data = RegionLoop,
+               aes(x = lon, xend = lon.C,
+                   y = lat, yend = lat.C),
+                color = "black", size = .5, alpha = .5) + 
+        map_airports + map_locations + map_locations_colors + map_legend +
+        #map_xlim + map_ylim + coord_map() +
+        ggtitle(paste0(RegionLoop$group[1], 
+                       ": ", nrow(RegionLoop), " sites (avg dist ",
+                       round(median(RegionLoop$dist.mi), 0), " mi.)")) 
+        
+    plot2 <- #map of shortest routes
+        basemap +
+        geom_path(data = RegionLoop[path.tsp,], 
+                   aes(x=lon, y=lat), color = "#E58700", size = 2, alpha = .5) +
+        geom_path(data = RegionLoop[path.tsp,], 
+                   aes(x=lon, y=lat), color = "black", size = .5, alpha = .5) +  
+        map_airports + map_locations + map_locations_colors + map_legend +
+        ggtitle(paste0("(n = ", sum(RegionLoop$value), ")")) +
+        theme(legend.position = "bottom")
+
+    #clustering    
+        EPS <- 1
+        clusters <- dbscan(select(RegionLoop, lat, lon), 
+                           eps = EPS, minPts = 5, weights = RegionLoop$value)
+        
+        RegionLoop$cluster <- clusters$cluster
+        
+        RegionLoop.Centroids <- 
+            RegionLoop %>%
+            group_by(cluster) %>% 
+            summarise(lon = median(lon),
+                      lat = median(lat)) %>% 
+            ungroup()
+    
+    #number of clusters generated
+        gen_c <- n_distinct(RegionLoop$cluster)
+        
+    
+    #clustering plot
+    plot3 <- 
+        basemap +
+        geom_point(data = RegionLoop, 
+                   aes(x = lon, y= lat, size = value, fill = as.factor(cluster)), 
+                   alpha = .9, color = "black", shape = 21)  +
+         geom_label(data = RegionLoop.Centroids, aes(x = lon, y = lat, label = cluster), 
+                    size = 3, alpha = .5, nudge_x = .4, nudge_y = .4) + 
+        theme(legend.position = "none") +
+        ggtitle(paste0("DBScan clustering (", gen_c, " clusters)"))
+
+    #put all plots together
+    grid.arrange(plot1, plot2, plot3, ncol=3)
+
+} #end of for loop
+```
+
+###Useful links
+
+* http://stackoverflow.com/questions/27363653/find-shortest-path-from-x-y-coordinates-with-start-%E2%89%A0-end
+
+* https://operatiology.wordpress.com/2014/05/31/tsp-with-latitudelongitude-coordinate-input-in-r/
+
+for more information contact: rjake@sas.upenn.edu
