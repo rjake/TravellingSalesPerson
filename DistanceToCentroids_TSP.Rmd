@@ -296,33 +296,6 @@ for(i in 1:nrow(Regions)){
 
 } #end of for loop
 
-
-
-
-#Not using
-    #clustering centroids 
-#        RegionLoop.Centroids <- 
-#            RegionLoop %>%
-#            group_by(cluster) %>% 
-#            summarise(lon = median(lon),
-#                      lat = median(lat)) %>% 
-#            ungroup()
-    
-    #number of clusters generated
-#        gen_c <- n_distinct(RegionLoop$cluster)
-        
-    
-    #clustering plot
-#    plot3 <- 
-#        basemap + map_projection + map_airports +
-#        geom_point(data = RegionLoop, 
-#                   aes(x = lon, y= lat, size = value, fill = as.factor(cluster)), 
-#                   alpha = 1, color = "black", shape = 21)  +
-#         geom_label(data = RegionLoop.Centroids, aes(x = lon, y = lat, label = cluster), 
-#                    size = 3, alpha = .5, nudge_x = .4, nudge_y = .4) + 
-#        theme(legend.position = "none") +
-#        ggtitle(paste0("DBScan clustering (", gen_c, " clusters)"))
-
 ```
 
 ###Useful links
