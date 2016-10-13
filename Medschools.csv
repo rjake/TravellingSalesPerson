@@ -1,164 +1,164 @@
-"UnitID","Institution.Name","lon","lat","Enrollment","Region","HBCU","Hospital","Control"
-100663,"University of Alabama at Birmingham",-86.80917,33.50223,12334,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-100858,"Auburn University",-85.482782,32.604685,22035,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-102094,"University of South Alabama",-88.18189,30.695081,12922,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-102377,"Tuskegee University",-85.710315,32.431021,2962,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","Yes","No","Private not-for-profit"
-104179,"University of Arizona",-110.950769,32.232071,36580,"Southwest AZ NM OK TX","No","No","Public"
-106263,"University of Arkansas for Medical Sciences",-92.320945,34.749718,2069,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-110644,"University of California-Davis",-121.751958,38.539895,33153,"Far West AK CA HI NV OR WA","No","Yes","Public"
-110653,"University of California-Irvine",-117.841248,33.648434,29273,"Far West AK CA HI NV OR WA","No","Yes","Public"
-110662,"University of California-Los Angeles",-118.443901,34.068892,40538,"Far West AK CA HI NV OR WA","No","Yes","Public"
-110680,"University of California-San Diego",-117.237793,32.876598,29766,"Far West AK CA HI NV OR WA","No","Yes","Public"
-110699,"University of California-San Francisco",-122.458049,37.762736,3170,"Far West AK CA HI NV OR WA","No","Yes","Public"
-112525,"Western University of Health Sciences",-117.747732,34.058092,3762,"Far West AK CA HI NV OR WA","No","No","Private not-for-profit"
-117636,"Loma Linda University",-117.261086,34.050975,3616,"Far West AK CA HI NV OR WA","No","No","Private not-for-profit"
-120883,"University of the Pacific",-121.307296,37.980624,5618,"Far West AK CA HI NV OR WA","No","No","Private not-for-profit"
-123961,"University of Southern California",-118.283858,34.021058,36452,"Far West AK CA HI NV OR WA","No","Yes","Private not-for-profit"
-126562,"University of Colorado Denver/Anschutz Medical Campus",-104.999181,39.74603,12147,"Rocky Mountains CO ID MT UT WY","No","Yes","Public"
-126818,"Colorado State University-Fort Collins",-105.08083,40.574759,23610,"Rocky Mountains CO ID MT UT WY","No","No","Public"
-129020,"University of Connecticut",-72.247969,41.806261,23199,"New England CT ME MA NH RI VT","No","Yes","Public"
-130226,"Quinnipiac University",-72.895542,41.419527,7666,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-130794,"Yale University",-72.926688,41.311158,12153,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-131469,"George Washington University",-77.047871,38.89865,17266,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-131496,"Georgetown University",-77.073463,38.908809,14416,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-131520,"Howard University",-77.019478,38.920739,9163,"Mid East DE DC MD NJ NY PA","Yes","Yes","Private not-for-profit"
-132903,"University of Central Florida",-81.198805,28.60106,40307,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-133669,"Florida Atlantic University",-80.102293,26.372536,17607,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-133951,"Florida International University",-80.377591,25.757111,31766,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-134097,"Florida State University",-84.294801,30.4421,35181,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-134130,"University of Florida",-82.339958,29.649428,41914,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-135726,"University of Miami",-80.27645,25.720406,15415,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Private not-for-profit"
-136215,"Nova Southeastern University",-80.24248,26.079337,12631,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-137351,"University of South Florida-Main Campus",-82.415876,28.056647,29724,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-139658,"Emory University",-84.325782,33.798836,13354,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Private not-for-profit"
-139959,"University of Georgia",-83.374049,33.956428,31868,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-140447,"Mercer University",-83.650114,32.831709,6672,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-142285,"University of Idaho",-117.024296,46.726894,9114,"Rocky Mountains CO ID MT UT WY","No","No","Public"
-143853,"Midwestern University-Downers Grove",-88.000989,41.828376,2863,"Great Lakes IL IN MI OH WI","No","Yes","Private not-for-profit"
-144050,"University of Chicago",-87.601196,41.78917,12658,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-145558,"Rosalind Franklin University of Medicine and Science",-87.859632,42.300069,2026,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-145600,"University of Illinois at Chicago",-87.651145,41.872651,23263,"Great Lakes IL IN MI OH WI","No","Yes","Public"
-145637,"University of Illinois at Urbana-Champaign",-88.230309,40.108864,41414,"Great Lakes IL IN MI OH WI","No","No","Public"
-146719,"Loyola University Chicago",-87.657399,41.999161,13431,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-147767,"Northwestern University",-87.673653,42.058377,17022,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-148511,"Rush University",-87.667498,41.874911,1520,"Great Lakes IL IN MI OH WI","No","Yes","Private not-for-profit"
-149222,"Southern Illinois University-Carbondale",-89.218724,37.713239,14621,"Great Lakes IL IN MI OH WI","No","Yes","Public"
-149231,"Southern Illinois University-Edwardsville",-89.997779,38.793949,10979,"Great Lakes IL IN MI OH WI","No","No","Public"
-151111,"Indiana University-Purdue University-Indianapolis",-86.172217,39.772948,21758,"Great Lakes IL IN MI OH WI","No","No","Public"
-151786,"Marian University",-86.204599,39.81534,2065,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-153603,"Iowa State University",-93.648353,42.026368,30888,"Plains IA KS MN MO NE ND SD","No","No","Public"
-153658,"University of Iowa",-91.535698,41.660695,24424,"Plains IA KS MN MO NE ND SD","No","Yes","Public"
-154156,"Des Moines University-Osteopathic Medical Center",-93.661686,41.583325,1402,"Plains IA KS MN MO NE ND SD","No","No","Private not-for-profit"
-155317,"University of Kansas",-95.247618,38.958551,23183,"Plains IA KS MN MO NE ND SD","No","No","Public"
-155399,"Kansas State University",-96.581077,39.188616,20741,"Plains IA KS MN MO NE ND SD","No","No","Public"
-157085,"University of Kentucky",-84.505653,38.035818,26469,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-157289,"University of Louisville",-85.758843,38.215752,16459,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-157535,"University of Pikeville",-82.520265,37.478835,1824,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-159373,"Louisiana State University Health Sciences Center-New Orleans",-90.083145,29.957272,2384,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-159391,"Louisiana State University and Agricultural & Mechanical College",-91.178921,30.414983,27462,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-160755,"Tulane University of Louisiana",-90.120409,29.939696,10292,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Private not-for-profit"
-161457,"University of New England",-70.385882,43.458172,5261,"New England CT ME MA NH RI VT","No","Yes","Private not-for-profit"
-162928,"Johns Hopkins University",-76.620799,39.32838,13407,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-163259,"University of Maryland  Baltimore",-76.625041,39.29151,4963,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-163286,"University of Maryland-College Park",-76.939494,38.985379,32938,"Mid East DE DC MD NJ NY PA","No","No","Public"
-164988,"Boston University",-71.09984,42.349581,25851,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-166027,"Harvard University",-71.118177,42.374429,20430,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-166708,"University of Massachusetts Medical School Worcester",-71.760689,42.277589,1028,"New England CT ME MA NH RI VT","No","No","Public"
-168148,"Tufts University",-71.121689,42.406994,10019,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-169716,"University of Detroit Mercy",-83.138369,42.417168,3674,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-170976,"University of Michigan-Ann Arbor",-83.743121,42.276061,41101,"Great Lakes IL IN MI OH WI","No","Yes","Public"
-171100,"Michigan State University",-84.476111,42.73212,43708,"Great Lakes IL IN MI OH WI","No","No","Public"
-171571,"Oakland University",-83.220523,42.67449,14083,"Great Lakes IL IN MI OH WI","No","No","Public"
-172644,"Wayne State University",-83.072864,42.35861,17837,"Great Lakes IL IN MI OH WI","No","No","Public"
-174066,"University of Minnesota-Twin Cities",-93.235352,44.977886,38623,"Plains IA KS MN MO NE ND SD","No","No","Public"
-174233,"University of Minnesota-Duluth",-92.085177,46.818896,9537,"Plains IA KS MN MO NE ND SD","No","No","Public"
-176017,"University of Mississippi",-89.539377,34.362144,19925,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-176080,"Mississippi State University",-88.788979,33.454809,17004,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-176479,"William Carey University",-89.291815,31.305264,2909,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-177834,"A T Still University of Health Sciences",-92.589183,40.193648,2448,"Plains IA KS MN MO NE ND SD","No","No","Private not-for-profit"
-178396,"University of Missouri-Columbia",-92.326429,38.941015,30962,"Plains IA KS MN MO NE ND SD","No","Yes","Public"
-178402,"University of Missouri-Kansas City",-94.578039,39.035366,10239,"Plains IA KS MN MO NE ND SD","No","No","Public"
-179159,"Saint Louis University",-90.23343,38.636516,10416,"Plains IA KS MN MO NE ND SD","No","Yes","Private not-for-profit"
-179812,"Kansas City University of Medicine and Biosciences",-94.561374,39.107553,1106,"Plains IA KS MN MO NE ND SD","No","No","Private not-for-profit"
-179867,"Washington University in St Louis",-90.311639,38.648125,12319,"Plains IA KS MN MO NE ND SD","No","No","Private not-for-profit"
-181002,"Creighton University",-95.947029,41.265325,6770,"Plains IA KS MN MO NE ND SD","No","Yes","Private not-for-profit"
-181428,"University of Nebraska Medical Center",-95.976147,41.255137,3171,"Plains IA KS MN MO NE ND SD","No","Yes","Public"
-182281,"University of Nevada-Las Vegas",-115.141153,36.106994,19781,"Far West AK CA HI NV OR WA","No","No","Public"
-182290,"University of Nevada-Reno",-119.818424,39.545052,15266,"Far West AK CA HI NV OR WA","No","No","Public"
-182670,"Dartmouth College",-72.289951,43.70408,6155,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-184782,"Rowan University",-75.117974,39.709768,11753,"Mid East DE DC MD NJ NY PA","No","No","Public"
-186380,"Rutgers University-New Brunswick",-74.45051,40.503796,40970,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-187985,"University of New Mexico-Main Campus",-106.620155,35.083868,19992,"Southwest AZ NM OK TX","No","Yes","Public"
-190150,"Columbia University in the City of New York",-73.961885,40.808286,23268,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-190415,"Cornell University",-76.483489,42.447199,21602,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-190424,"Weill Cornell Medical College",-73.954839,40.764738,1023,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-191649,"Hofstra University",-73.60078,40.715959,9479,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-193405,"Icahn School of Medicine at Mount Sinai",-73.953445,40.789801,1074,"Mid East DE DC MD NJ NY PA","No","Yes","Private not-for-profit"
-193830,"New York Medical College",-73.811241,41.084261,1182,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-193900,"New York University",-73.997264,40.729452,39898,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-194091,"New York Institute of Technology",-73.608885,40.814402,6467,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-195030,"University of Rochester",-77.631042,43.126437,9436,"Mid East DE DC MD NJ NY PA","No","Yes","Private not-for-profit"
-196088,"University at Buffalo",-78.790103,43.001433,24588,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-196097,"Stony Brook University",-73.123595,40.913138,20640,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-196255,"SUNY Downstate Medical Center",-73.943827,40.655283,1365,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-196307,"Upstate Medical University",-76.138976,43.042951,1240,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-196592,"Touro College",-73.989691,40.75348,8087,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-197708,"Yeshiva University",-73.928541,40.8508,5394,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-198419,"Duke University",-78.94226,36.00159,15130,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Private not-for-profit"
-198464,"East Carolina University",-77.366199,35.606347,21352,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-199120,"University of North Carolina at Chapel Hill",-79.050969,35.912165,24275,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-199193,"North Carolina State University at Raleigh",-78.674517,35.785111,26965,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-199847,"Wake Forest University",-80.279004,36.135301,7474,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-200280,"University of North Dakota",-97.073451,47.919774,10786,"Plains IA KS MN MO NE ND SD","No","No","Public"
-201645,"Case Western Reserve University",-81.605769,41.500812,9810,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-201885,"University of Cincinnati-Main Campus",-84.51428,39.131159,26276,"Great Lakes IL IN MI OH WI","No","No","Public"
-204857,"Ohio University-Main Campus",-82.101064,39.326799,19869,"Great Lakes IL IN MI OH WI","No","No","Public"
-206084,"University of Toledo",-83.615225,41.65795,15903,"Great Lakes IL IN MI OH WI","No","Yes","Public"
-206604,"Wright State University-Main Campus",-84.064881,39.780634,11553,"Great Lakes IL IN MI OH WI","No","No","Public"
-207342,"University of Oklahoma-Health Sciences Center",-97.496289,35.47928,2929,"Southwest AZ NM OK TX","No","No","Public"
-207388,"Oklahoma State University-Main Campus",-97.069743,36.123085,20129,"Southwest AZ NM OK TX","No","No","Public"
-209490,"Oregon Health & Science University",-122.686096,45.498772,1608,"Far West AK CA HI NV OR WA","No","Yes","Public"
-209542,"Oregon State University",-123.274721,44.56274,22052,"Far West AK CA HI NV OR WA","No","No","Public"
-212054,"Drexel University",-75.188745,39.954855,19202,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-215062,"University of Pennsylvania",-75.193618,39.951002,21441,"Mid East DE DC MD NJ NY PA","No","Yes","Private not-for-profit"
-215123,"Philadelphia College of Osteopathic Medicine",-75.214198,40.006308,2549,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-215293,"University of Pittsburgh-Pittsburgh Campus",-79.954692,40.444502,25283,"Mid East DE DC MD NJ NY PA","No","No","Public"
-216339,"Temple University",-75.158267,39.980943,31807,"Mid East DE DC MD NJ NY PA","No","Yes","Public"
-216366,"Thomas Jefferson University",-75.158147,39.949062,2628,"Mid East DE DC MD NJ NY PA","No","Yes","Private not-for-profit"
-217156,"Brown University",-71.404467,41.827605,8756,"New England CT ME MA NH RI VT","No","No","Private not-for-profit"
-218335,"Medical University of South Carolina",-79.946853,32.786017,2689,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-218663,"University of South Carolina-Columbia",-81.026971,33.998973,28903,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-219471,"University of South Dakota",-96.924664,42.784558,6136,"Plains IA KS MN MO NE ND SD","No","No","Public"
-220075,"East Tennessee State University",-82.366734,36.304077,11377,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-220631,"Lincoln Memorial University",-83.658818,36.581284,2910,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-221759,"The University of Tennessee-Knoxville",-83.929696,35.955093,26728,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-221999,"Vanderbilt University",-86.804875,36.14443,11872,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Private not-for-profit"
-223223,"Baylor College of Medicine",-95.395743,29.7106,1584,"Southwest AZ NM OK TX","No","Yes","Private not-for-profit"
-228635,"University of Texas Southwestern Medical Center",-96.842311,32.819539,1730,"Southwest AZ NM OK TX","No","Yes","Public"
-228644,"The University of Texas Health Science Center at San Antonio",-98.57606,29.504716,2803,"Southwest AZ NM OK TX","No","Yes","Public"
-228653,"The University of Texas Medical Branch",-94.776401,29.311333,2385,"Southwest AZ NM OK TX","No","Yes","Public"
-228909,"University of North Texas Health Science Center",-97.368897,32.749818,2082,"Southwest AZ NM OK TX","No","No","Public"
-229300,"The University of Texas Health Science Center at Houston",-95.403183,29.702873,3267,"Southwest AZ NM OK TX","No","Yes","Public"
-229337,"Texas Tech University Health Sciences Center",-101.89359,33.593227,3778,"Southwest AZ NM OK TX","No","Yes","Public"
-230728,"Utah State University",-111.81391,41.740748,16953,"Rocky Mountains CO ID MT UT WY","No","No","Public"
-230764,"University of Utah",-111.846044,40.762484,22994,"Rocky Mountains CO ID MT UT WY","No","Yes","Public"
-231174,"University of Vermont",-73.198128,44.479262,11152,"New England CT ME MA NH RI VT","No","No","Public"
-233921,"Virginia Polytechnic Institute and State University",-80.423229,37.228572,28504,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-234030,"Virginia Commonwealth University",-77.453597,37.547631,25031,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-234076,"University of Virginia-Main Campus",-78.505153,38.037796,21640,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
-236939,"Washington State University",-117.158168,46.730448,24243,"Far West AK CA HI NV OR WA","No","No","Public"
-236948,"University of Washington-Seattle Campus",-122.313115,47.656213,39171,"Far West AK CA HI NV OR WA","No","Yes","Public"
-237525,"Marshall University",-82.43065,38.42261,10067,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-238032,"West Virginia University",-79.953926,39.63468,25612,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Public"
-239105,"Marquette University",-87.927961,43.03903,10210,"Great Lakes IL IN MI OH WI","No","No","Private not-for-profit"
-239169,"Medical College of Wisconsin",-88.022698,43.044108,1019,"Great Lakes IL IN MI OH WI","No","Yes","Private not-for-profit"
-240444,"University of Wisconsin-Madison",-89.405356,43.073858,38149,"Great Lakes IL IN MI OH WI","No","No","Public"
-243744,"Stanford University",-122.168826,37.426967,15751,"Far West AK CA HI NV OR WA","No","Yes","Private not-for-profit"
-243780,"Purdue University-Main Campus",-86.914435,40.428206,34653,"Great Lakes IL IN MI OH WI","No","No","Public"
-407629,"Lake Erie College of Osteopathic Medicine",-80.105969,42.080699,3770,"Mid East DE DC MD NJ NY PA","No","No","Private not-for-profit"
-423643,"Midwestern University-Glendale",-112.183556,33.663217,3101,"Southwest AZ NM OK TX","No","Yes","Private not-for-profit"
-442806,"Edward Via College of Osteopathic Medicine",-80.406021,37.199666,1444,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","No","Private not-for-profit"
-445735,"Roseman University of Health Sciences",-115.066835,36.072723,1375,"Far West AK CA HI NV OR WA","No","No","Private not-for-profit"
-459736,"Touro University California",-122.26555,38.084841,1221,"Far West AK CA HI NV OR WA","No","No","Private not-for-profit"
-459824,"Touro University Nevada",-115.024021,36.04329,1056,"Far West AK CA HI NV OR WA","No","No","Private not-for-profit"
-482149,"Augusta University",-81.988361,33.47145,6379,"Southeast AL AR FL GA KY LA MS NC SC TN VA WV","No","Yes","Public"
+UnitID,Institution.Name,lon,lat,Enrollment,Region,HBCU,Hospital,Control
+100663,University of Alabama at Birmingham,-86.80917,33.50223,12334,Southeast,No,Yes,Public
+100858,Auburn University,-85.482782,32.604685,22035,Southeast,No,No,Public
+102094,University of South Alabama,-88.18189,30.695081,12922,Southeast,No,Yes,Public
+102377,Tuskegee University,-85.710315,32.431021,2962,Southeast,Yes,No,Private not-for-profit
+104179,University of Arizona,-110.950769,32.232071,36580,Southwest,No,No,Public
+106263,University of Arkansas for Medical Sciences,-92.320945,34.749718,2069,Southeast,No,Yes,Public
+110644,University of California-Davis,-121.751958,38.539895,33153,Far West,No,Yes,Public
+110653,University of California-Irvine,-117.841248,33.648434,29273,Far West,No,Yes,Public
+110662,University of California-Los Angeles,-118.443901,34.068892,40538,Far West,No,Yes,Public
+110680,University of California-San Diego,-117.237793,32.876598,29766,Far West,No,Yes,Public
+110699,University of California-San Francisco,-122.458049,37.762736,3170,Far West,No,Yes,Public
+112525,Western University of Health Sciences,-117.747732,34.058092,3762,Far West,No,No,Private not-for-profit
+117636,Loma Linda University,-117.261086,34.050975,3616,Far West,No,No,Private not-for-profit
+120883,University of the Pacific,-121.307296,37.980624,5618,Far West,No,No,Private not-for-profit
+123961,University of Southern California,-118.283858,34.021058,36452,Far West,No,Yes,Private not-for-profit
+126562,University of Colorado Denver/Anschutz Medical Campus,-104.999181,39.74603,12147,Rocky Mountains,No,Yes,Public
+126818,Colorado State University-Fort Collins,-105.08083,40.574759,23610,Rocky Mountains,No,No,Public
+129020,University of Connecticut,-72.247969,41.806261,23199,New England,No,Yes,Public
+130226,Quinnipiac University,-72.895542,41.419527,7666,New England,No,No,Private not-for-profit
+130794,Yale University,-72.926688,41.311158,12153,New England,No,No,Private not-for-profit
+131469,George Washington University,-77.047871,38.89865,17266,Mid East,No,No,Private not-for-profit
+131496,Georgetown University,-77.073463,38.908809,14416,Mid East,No,No,Private not-for-profit
+131520,Howard University,-77.019478,38.920739,9163,Mid East,Yes,Yes,Private not-for-profit
+132903,University of Central Florida,-81.198805,28.60106,40307,Southeast,No,No,Public
+133669,Florida Atlantic University,-80.102293,26.372536,17607,Southeast,No,No,Public
+133951,Florida International University,-80.377591,25.757111,31766,Southeast,No,No,Public
+134097,Florida State University,-84.294801,30.4421,35181,Southeast,No,No,Public
+134130,University of Florida,-82.339958,29.649428,41914,Southeast,No,No,Public
+135726,University of Miami,-80.27645,25.720406,15415,Southeast,No,Yes,Private not-for-profit
+136215,Nova Southeastern University,-80.24248,26.079337,12631,Southeast,No,No,Private not-for-profit
+137351,University of South Florida-Main Campus,-82.415876,28.056647,29724,Southeast,No,No,Public
+139658,Emory University,-84.325782,33.798836,13354,Southeast,No,Yes,Private not-for-profit
+139959,University of Georgia,-83.374049,33.956428,31868,Southeast,No,No,Public
+140447,Mercer University,-83.650114,32.831709,6672,Southeast,No,No,Private not-for-profit
+142285,University of Idaho,-117.024296,46.726894,9114,Rocky Mountains,No,No,Public
+143853,Midwestern University-Downers Grove,-88.000989,41.828376,2863,Great Lakes,No,Yes,Private not-for-profit
+144050,University of Chicago,-87.601196,41.78917,12658,Great Lakes,No,No,Private not-for-profit
+145558,Rosalind Franklin University of Medicine and Science,-87.859632,42.300069,2026,Great Lakes,No,No,Private not-for-profit
+145600,University of Illinois at Chicago,-87.651145,41.872651,23263,Great Lakes,No,Yes,Public
+145637,University of Illinois at Urbana-Champaign,-88.230309,40.108864,41414,Great Lakes,No,No,Public
+146719,Loyola University Chicago,-87.657399,41.999161,13431,Great Lakes,No,No,Private not-for-profit
+147767,Northwestern University,-87.673653,42.058377,17022,Great Lakes,No,No,Private not-for-profit
+148511,Rush University,-87.667498,41.874911,1520,Great Lakes,No,Yes,Private not-for-profit
+149222,Southern Illinois University-Carbondale,-89.218724,37.713239,14621,Great Lakes,No,Yes,Public
+149231,Southern Illinois University-Edwardsville,-89.997779,38.793949,10979,Great Lakes,No,No,Public
+151111,Indiana University-Purdue University-Indianapolis,-86.172217,39.772948,21758,Great Lakes,No,No,Public
+151786,Marian University,-86.204599,39.81534,2065,Great Lakes,No,No,Private not-for-profit
+153603,Iowa State University,-93.648353,42.026368,30888,Plains,No,No,Public
+153658,University of Iowa,-91.535698,41.660695,24424,Plains,No,Yes,Public
+154156,Des Moines University-Osteopathic Medical Center,-93.661686,41.583325,1402,Plains,No,No,Private not-for-profit
+155317,University of Kansas,-95.247618,38.958551,23183,Plains,No,No,Public
+155399,Kansas State University,-96.581077,39.188616,20741,Plains,No,No,Public
+157085,University of Kentucky,-84.505653,38.035818,26469,Southeast,No,Yes,Public
+157289,University of Louisville,-85.758843,38.215752,16459,Southeast,No,Yes,Public
+157535,University of Pikeville,-82.520265,37.478835,1824,Southeast,No,No,Private not-for-profit
+159373,Louisiana State University Health Sciences Center-New Orleans,-90.083145,29.957272,2384,Southeast,No,No,Public
+159391,Louisiana State University and Agricultural & Mechanical College,-91.178921,30.414983,27462,Southeast,No,No,Public
+160755,Tulane University of Louisiana,-90.120409,29.939696,10292,Southeast,No,Yes,Private not-for-profit
+161457,University of New England,-70.385882,43.458172,5261,New England,No,Yes,Private not-for-profit
+162928,Johns Hopkins University,-76.620799,39.32838,13407,Mid East,No,No,Private not-for-profit
+163259,University of Maryland  Baltimore,-76.625041,39.29151,4963,Mid East,No,Yes,Public
+163286,University of Maryland-College Park,-76.939494,38.985379,32938,Mid East,No,No,Public
+164988,Boston University,-71.09984,42.349581,25851,New England,No,No,Private not-for-profit
+166027,Harvard University,-71.118177,42.374429,20430,New England,No,No,Private not-for-profit
+166708,University of Massachusetts Medical School Worcester,-71.760689,42.277589,1028,New England,No,No,Public
+168148,Tufts University,-71.121689,42.406994,10019,New England,No,No,Private not-for-profit
+169716,University of Detroit Mercy,-83.138369,42.417168,3674,Great Lakes,No,No,Private not-for-profit
+170976,University of Michigan-Ann Arbor,-83.743121,42.276061,41101,Great Lakes,No,Yes,Public
+171100,Michigan State University,-84.476111,42.73212,43708,Great Lakes,No,No,Public
+171571,Oakland University,-83.220523,42.67449,14083,Great Lakes,No,No,Public
+172644,Wayne State University,-83.072864,42.35861,17837,Great Lakes,No,No,Public
+174066,University of Minnesota-Twin Cities,-93.235352,44.977886,38623,Plains,No,No,Public
+174233,University of Minnesota-Duluth,-92.085177,46.818896,9537,Plains,No,No,Public
+176017,University of Mississippi,-89.539377,34.362144,19925,Southeast,No,Yes,Public
+176080,Mississippi State University,-88.788979,33.454809,17004,Southeast,No,No,Public
+176479,William Carey University,-89.291815,31.305264,2909,Southeast,No,No,Private not-for-profit
+177834,A T Still University of Health Sciences,-92.589183,40.193648,2448,Plains,No,No,Private not-for-profit
+178396,University of Missouri-Columbia,-92.326429,38.941015,30962,Plains,No,Yes,Public
+178402,University of Missouri-Kansas City,-94.578039,39.035366,10239,Plains,No,No,Public
+179159,Saint Louis University,-90.23343,38.636516,10416,Plains,No,Yes,Private not-for-profit
+179812,Kansas City University of Medicine and Biosciences,-94.561374,39.107553,1106,Plains,No,No,Private not-for-profit
+179867,Washington University in St Louis,-90.311639,38.648125,12319,Plains,No,No,Private not-for-profit
+181002,Creighton University,-95.947029,41.265325,6770,Plains,No,Yes,Private not-for-profit
+181428,University of Nebraska Medical Center,-95.976147,41.255137,3171,Plains,No,Yes,Public
+182281,University of Nevada-Las Vegas,-115.141153,36.106994,19781,Far West,No,No,Public
+182290,University of Nevada-Reno,-119.818424,39.545052,15266,Far West,No,No,Public
+182670,Dartmouth College,-72.289951,43.70408,6155,New England,No,No,Private not-for-profit
+184782,Rowan University,-75.117974,39.709768,11753,Mid East,No,No,Public
+186380,Rutgers University-New Brunswick,-74.45051,40.503796,40970,Mid East,No,Yes,Public
+187985,University of New Mexico-Main Campus,-106.620155,35.083868,19992,Southwest,No,Yes,Public
+190150,Columbia University in the City of New York,-73.961885,40.808286,23268,Mid East,No,No,Private not-for-profit
+190415,Cornell University,-76.483489,42.447199,21602,Mid East,No,No,Private not-for-profit
+190424,Weill Cornell Medical College,-73.954839,40.764738,1023,Mid East,No,No,Private not-for-profit
+191649,Hofstra University,-73.60078,40.715959,9479,Mid East,No,No,Private not-for-profit
+193405,Icahn School of Medicine at Mount Sinai,-73.953445,40.789801,1074,Mid East,No,Yes,Private not-for-profit
+193830,New York Medical College,-73.811241,41.084261,1182,Mid East,No,No,Private not-for-profit
+193900,New York University,-73.997264,40.729452,39898,Mid East,No,No,Private not-for-profit
+194091,New York Institute of Technology,-73.608885,40.814402,6467,Mid East,No,No,Private not-for-profit
+195030,University of Rochester,-77.631042,43.126437,9436,Mid East,No,Yes,Private not-for-profit
+196088,University at Buffalo,-78.790103,43.001433,24588,Mid East,No,Yes,Public
+196097,Stony Brook University,-73.123595,40.913138,20640,Mid East,No,Yes,Public
+196255,SUNY Downstate Medical Center,-73.943827,40.655283,1365,Mid East,No,Yes,Public
+196307,Upstate Medical University,-76.138976,43.042951,1240,Mid East,No,Yes,Public
+196592,Touro College,-73.989691,40.75348,8087,Mid East,No,No,Private not-for-profit
+197708,Yeshiva University,-73.928541,40.8508,5394,Mid East,No,No,Private not-for-profit
+198419,Duke University,-78.94226,36.00159,15130,Southeast,No,Yes,Private not-for-profit
+198464,East Carolina University,-77.366199,35.606347,21352,Southeast,No,No,Public
+199120,University of North Carolina at Chapel Hill,-79.050969,35.912165,24275,Southeast,No,No,Public
+199193,North Carolina State University at Raleigh,-78.674517,35.785111,26965,Southeast,No,No,Public
+199847,Wake Forest University,-80.279004,36.135301,7474,Southeast,No,No,Private not-for-profit
+200280,University of North Dakota,-97.073451,47.919774,10786,Plains,No,No,Public
+201645,Case Western Reserve University,-81.605769,41.500812,9810,Great Lakes,No,No,Private not-for-profit
+201885,University of Cincinnati-Main Campus,-84.51428,39.131159,26276,Great Lakes,No,No,Public
+204857,Ohio University-Main Campus,-82.101064,39.326799,19869,Great Lakes,No,No,Public
+206084,University of Toledo,-83.615225,41.65795,15903,Great Lakes,No,Yes,Public
+206604,Wright State University-Main Campus,-84.064881,39.780634,11553,Great Lakes,No,No,Public
+207342,University of Oklahoma-Health Sciences Center,-97.496289,35.47928,2929,Southwest,No,No,Public
+207388,Oklahoma State University-Main Campus,-97.069743,36.123085,20129,Southwest,No,No,Public
+209490,Oregon Health & Science University,-122.686096,45.498772,1608,Far West,No,Yes,Public
+209542,Oregon State University,-123.274721,44.56274,22052,Far West,No,No,Public
+212054,Drexel University,-75.188745,39.954855,19202,Mid East,No,No,Private not-for-profit
+215062,University of Pennsylvania,-75.193618,39.951002,21441,Mid East,No,Yes,Private not-for-profit
+215123,Philadelphia College of Osteopathic Medicine,-75.214198,40.006308,2549,Mid East,No,No,Private not-for-profit
+215293,University of Pittsburgh-Pittsburgh Campus,-79.954692,40.444502,25283,Mid East,No,No,Public
+216339,Temple University,-75.158267,39.980943,31807,Mid East,No,Yes,Public
+216366,Thomas Jefferson University,-75.158147,39.949062,2628,Mid East,No,Yes,Private not-for-profit
+217156,Brown University,-71.404467,41.827605,8756,New England,No,No,Private not-for-profit
+218335,Medical University of South Carolina,-79.946853,32.786017,2689,Southeast,No,No,Public
+218663,University of South Carolina-Columbia,-81.026971,33.998973,28903,Southeast,No,No,Public
+219471,University of South Dakota,-96.924664,42.784558,6136,Plains,No,No,Public
+220075,East Tennessee State University,-82.366734,36.304077,11377,Southeast,No,No,Public
+220631,Lincoln Memorial University,-83.658818,36.581284,2910,Southeast,No,No,Private not-for-profit
+221759,The University of Tennessee-Knoxville,-83.929696,35.955093,26728,Southeast,No,No,Public
+221999,Vanderbilt University,-86.804875,36.14443,11872,Southeast,No,Yes,Private not-for-profit
+223223,Baylor College of Medicine,-95.395743,29.7106,1584,Southwest,No,Yes,Private not-for-profit
+228635,University of Texas Southwestern Medical Center,-96.842311,32.819539,1730,Southwest,No,Yes,Public
+228644,The University of Texas Health Science Center at San Antonio,-98.57606,29.504716,2803,Southwest,No,Yes,Public
+228653,The University of Texas Medical Branch,-94.776401,29.311333,2385,Southwest,No,Yes,Public
+228909,University of North Texas Health Science Center,-97.368897,32.749818,2082,Southwest,No,No,Public
+229300,The University of Texas Health Science Center at Houston,-95.403183,29.702873,3267,Southwest,No,Yes,Public
+229337,Texas Tech University Health Sciences Center,-101.89359,33.593227,3778,Southwest,No,Yes,Public
+230728,Utah State University,-111.81391,41.740748,16953,Rocky Mountains,No,No,Public
+230764,University of Utah,-111.846044,40.762484,22994,Rocky Mountains,No,Yes,Public
+231174,University of Vermont,-73.198128,44.479262,11152,New England,No,No,Public
+233921,Virginia Polytechnic Institute and State University,-80.423229,37.228572,28504,Southeast,No,No,Public
+234030,Virginia Commonwealth University,-77.453597,37.547631,25031,Southeast,No,Yes,Public
+234076,University of Virginia-Main Campus,-78.505153,38.037796,21640,Southeast,No,Yes,Public
+236939,Washington State University,-117.158168,46.730448,24243,Far West,No,No,Public
+236948,University of Washington-Seattle Campus,-122.313115,47.656213,39171,Far West,No,Yes,Public
+237525,Marshall University,-82.43065,38.42261,10067,Southeast,No,No,Public
+238032,West Virginia University,-79.953926,39.63468,25612,Southeast,No,No,Public
+239105,Marquette University,-87.927961,43.03903,10210,Great Lakes,No,No,Private not-for-profit
+239169,Medical College of Wisconsin,-88.022698,43.044108,1019,Great Lakes,No,Yes,Private not-for-profit
+240444,University of Wisconsin-Madison,-89.405356,43.073858,38149,Great Lakes,No,No,Public
+243744,Stanford University,-122.168826,37.426967,15751,Far West,No,Yes,Private not-for-profit
+243780,Purdue University-Main Campus,-86.914435,40.428206,34653,Great Lakes,No,No,Public
+407629,Lake Erie College of Osteopathic Medicine,-80.105969,42.080699,3770,Mid East,No,No,Private not-for-profit
+423643,Midwestern University-Glendale,-112.183556,33.663217,3101,Southwest,No,Yes,Private not-for-profit
+442806,Edward Via College of Osteopathic Medicine,-80.406021,37.199666,1444,Southeast,No,No,Private not-for-profit
+445735,Roseman University of Health Sciences,-115.066835,36.072723,1375,Far West,No,No,Private not-for-profit
+459736,Touro University California,-122.26555,38.084841,1221,Far West,No,No,Private not-for-profit
+459824,Touro University Nevada,-115.024021,36.04329,1056,Far West,No,No,Private not-for-profit
+482149,Augusta University,-81.988361,33.47145,6379,Southeast,No,Yes,Public
