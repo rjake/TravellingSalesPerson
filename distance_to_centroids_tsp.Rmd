@@ -197,14 +197,14 @@ create_hull <- function(i) {
   group_points <- locations %>%
     filter(group == regions$group[i]) %>%
     select(lon, lat)
-  select_hull <- chull(group_points)
-  select_hull <- c(select_hull, select_hull[1])
-
-  group_outline <- rbind(
-    group_outline,
-    group_points[select_hull, ] %>%
+  
+  select_hull <- 
+    chull(group_points) %>% 
+    c(.[1])
+  
+    group_points %>% 
+      slice(select_hull) %>%
       mutate(group = regions$group[i])
-  )
 }
 
 group_outline <- map_dfr(1:nrow(regions), create_hull)
@@ -264,7 +264,11 @@ create_plots <- function(i) {
       method = cluster_method[which_cluster_method]
     )
 
-  region_loop$cluster <- cutree(clusters_loop, h = mean(clusters_loop$height))
+  region_loop$cluster <- 
+    cutree(
+      clusters_loop, 
+      h = mean(clusters_loop$height)
+    )
 
   # table(region_loop$cluster)
 
@@ -364,7 +368,7 @@ create_plots <- function(i) {
 }
 
 # for loop to generate maps
-map(1:nrow(regions), create_plots)
+purrr::walk(1:nrow(regions), create_plots)
 ```
 
 ###Useful links
