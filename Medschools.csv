@@ -1,4 +1,4 @@
-UnitID,Institution.Name,lon,lat,Enrollment,Region,HBCU,Hospital,Control
+unit_id,institution,lon,lat,enrollment,region,hbcu,hospital,control
 100663,University of Alabama at Birmingham,-86.80917,33.50223,12334,Southeast,No,Yes,Public
 100858,Auburn University,-85.482782,32.604685,22035,Southeast,No,No,Public
 102094,University of South Alabama,-88.18189,30.695081,12922,Southeast,No,Yes,Public
