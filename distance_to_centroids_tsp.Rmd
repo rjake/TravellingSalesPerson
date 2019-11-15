@@ -1,7 +1,8 @@
 ---
 title: "Distances to Centroids & TSP across Groups"
-author: "Jake Riley, 2016"
-output: html_document
+author: "Jake Riley"
+date: `r format(Sys.Date(), "%B %d, %Y")`
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
