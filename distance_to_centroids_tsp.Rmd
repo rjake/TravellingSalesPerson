@@ -1,7 +1,7 @@
 ---
 title: "Distances to Centroids & TSP across Groups"
 author: "Jake Riley"
-date: `r format(Sys.Date(), "%B %d, %Y")`
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: github_document
 ---
 
@@ -29,7 +29,7 @@ library(gridExtra) # combines ggplot charts
 you can change this to bring in your own data as long as the coordinates are WGS84 and in a dataframe. Use the bottom half of this chunk to clarify which columns have your coordinates, unique IDs, grouping value and the column to be used for weighting (a numeric value)
 ```{r echo = TRUE}
 locations <-
-  read.csv("medschools.csv", stringsAsFactors = FALSE)
+  read.csv("data/medschools.csv", stringsAsFactors = FALSE)
 
 # identify the following variables
 locations$id <- locations$unit_id # the unique identifier for each site
@@ -98,7 +98,7 @@ if (use_group == FALSE) {
 Read in airports
 ```{r}
 airports <-
-  read.csv("airports.csv", stringsAsFactors = FALSE)
+  read.csv("data/airports.csv", stringsAsFactors = FALSE)
 ```
 
 
