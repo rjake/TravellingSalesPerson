@@ -5,206 +5,240 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F, fig.width = 12)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  message = FALSE,
+  fig.width = 12
+)
 ```
 
 ###Set workspace
 ```{r}
-library(tidyverse)  #dplyr, ggplot
-library(ggmap)      #for geom_leg() call
-library(RCurl)      #for reading csv from github
-library(dbscan)     #clustering
-library(geosphere)  #calculates distances
-library(TSP)        #solves travelling salesperson problem
-library(gridExtra)  #combines ggplot charts
+library(tidyverse) # dplyr, ggplot
+library(ggmap) # for geom_leg() call
+library(dbscan) # clustering
+library(geosphere) # calculates distances
+library(TSP) # solves travelling salesperson problem
+library(gridExtra) # combines ggplot charts
 ```
 
 ###Read in locations
 you can change this to bring in your own data as long as the coordinates are WGS84 and in a dataframe. Use the bottom half of this chunk to clarify which columns have your coordinates, unique IDs, grouping value and the column to be used for weighting (a numeric value)
-```{r echo = T}
-Locations <- 
-    getURL("https://raw.githubusercontent.com/rjake/TravellingSalesPerson/master/Medschools.csv") %>%
-    read.csv(text=., stringsAsFactors = F) %>%  # the dot means "this data" in the pipe
-    as.data.frame()     
+```{r echo = TRUE}
+locations <-
+  read.csv("medschools.csv", stringsAsFactors = FALSE)
 
-#identify the following variables
-    Locations$ID    <- Locations$UnitID #the unique identifier for each site
-    Locations$lon   <- Locations$lon        #Y coord
-    Locations$lat   <- Locations$lat        #X coord
-    Locations$value <- Locations$Enrollment  #size of points, weight for clustering
-   
-#What does this data describe
-data_title <- "Medical Schools by Enrollment (2015)"
-    
-#Want to use groups? 
-    #If yes, write "TRUE" and assign a group. 
-    #If no, write "FALSE" and then select clustering method
-  use_group <- TRUE
-  Locations$group <- Locations$Region #column to group by geographically 
+# identify the following variables
+locations$id <- locations$unit_id # the unique identifier for each site
+locations$lon <- locations$lon # Y coord
+locations$lat <- locations$lat # X coord
+locations$value <- locations$enrollment # size of points, weight for clustering
 
-#clsutering method    
-  clustMethod <- c("ward.D", "ward.D2", "single", "complete",
-                   "average", "mcquitty", "median", "centroid")
-  which_clustMethod <- 1 #defaults to 1: hclust(method = "ward.D")
+# What does this data describe
+data_title <- "Medical Schools by enrollment (2015)"
 
+# Want to use groups?
+# If yes, write "TRUE" and assign a group.
+# If no, write "FALSE" and then select clustering method
+use_group <- TRUE
+locations$group <- locations$region # column to group by geographically
+
+# clsutering method
+cluster_method <- c(
+  "ward.D", "ward.D2", "single", "complete",
+  "average", "mcquitty", "median", "centroid"
+)
+which_cluster_method <- 1 # defaults to 1: hclust(method = "ward.D")
 ```
 
 The code should run from here
 
 ###What to do about groups: ```r ifelse(use_group == T, "use original groups", "clustering algorithm")```
 ```{r}
-if(use_group == F){
-    
-    clusters <- hclust(dist(select(Locations, lat, lon)), 
-                       method = clustMethod[which_clustMethod])
+if (use_group == FALSE) {
+  clusters <- hclust(dist(select(locations, lat, lon)),
+    method = cluster_method[which_cluster_method]
+  )
 
-    #summary(clusters$height)
-    Locations$group <- paste0("cluster ",
-                              cutree(clusters, h = mean(clusters$height)))
-    
-    cluster_bar <- 
-        Locations %>% 
-        group_by(group) %>% 
-        summarise(nPoints = n()) %>% 
-        arrange(-nPoints) %>% 
-        ungroup() %>%
-        mutate(Ord = row_number())
-    
-    ggplot(cluster_bar) +
-      geom_boxplot(aes(y=nPoints, x = 1)) +
-      coord_flip() +
-      ggtitle(paste0("Distribution of points among the ",
-                     nrow(cluster_bar), " clusters")) +
-      theme(axis.text.y = element_blank(),
-            axis.title.y = element_blank(),
-            aspect.ratio = .25)
-    
+  # summary(clusters$height)
+  locations$group <- paste0(
+    "cluster ",
+    cutree(clusters, h = mean(clusters$height))
+  )
 
+  cluster_bar <-
+    locations %>%
+    group_by(group) %>%
+    summarise(n_points = n()) %>%
+    arrange(desc(n_points)) %>%
+    ungroup() %>%
+    mutate(ord = row_number())
+
+  ggplot(cluster_bar) +
+    geom_boxplot(aes(y = n_points, x = 1)) +
+    coord_flip() +
+    ggtitle(paste0(
+      "Distribution of points among the ",
+      nrow(cluster_bar), " clusters"
+    )) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      aspect.ratio = .25
+    )
 } else {
-    Locations$group <- Locations$group
+  locations$group <- locations$group
 }
 ```
 
 
-Read in Airports
+Read in airports
 ```{r}
-Airports <- 
-        getURL("https://raw.githubusercontent.com/rjake/TravellingSalesPerson/master/airports.csv")%>%
-        read.csv(text=., stringsAsFactors = F)%>%  
-        as.data.frame()        
+airports <-
+  read.csv("airports.csv", stringsAsFactors = FALSE)
 ```
 
 
 Create centers by finding the centroids of each group, then find the closest site to the centroid, then calculate distances to that central location
 ```{r}
-Regions <- 
-    Locations %>%
-    select(group) %>%
-    distinct() %>% 
-    arrange(group)
+regions <-
+  locations %>%
+  select(group) %>%
+  distinct() %>%
+  arrange(group)
 
-Centroid <- 
-    Locations %>%
-    select(ID, group, lon, lat) %>% 
-    group_by(group) %>% 
-        mutate(lon.C = median(lon),
-               lat.C = median(lat)) %>% 
-        ungroup() %>% 
-    #get distances to centroid of region
-    rowwise() %>% 
-        mutate(dist.mi = distGeo(p1 = c(lon, lat), 
-                                 p2 = c(lon.C, lat.C))/1609.34) %>%
-        ungroup() %>% 
-    #identify central facility
-    group_by(group) %>% 
-        arrange(dist.mi) %>% 
-        mutate(Ord = row_number()) %>% 
-        ungroup() %>%
-    mutate(Central = ifelse(Ord == 1, "Central", "Other")) %>% 
-    #assign central facility as navigation point (lon.C, lat.C)
-    group_by(group) %>% 
-        arrange(Ord) %>% 
-        mutate(lon.C = ifelse(Ord == 1, lon, 0),
-               lat.C = ifelse(Ord == 1, lat, 0)) %>%
-        mutate(lon.C = min(lon.C),
-               lat.C = max(lat.C)) %>% 
-        ungroup() %>% 
-    #get distances for each site to central facility
-    rowwise() %>% 
-        mutate(dist.mi = distGeo(p1 = c(lon, lat), 
-                                 p2 = c(lon.C, lat.C))/1609.34) %>% 
-                                 #convert from meters to miles
-        ungroup()
+centroid <-
+  locations %>%
+  select(id, group, lon, lat) %>%
+  group_by(group) %>%
+  mutate(
+    centroid_lon = median(lon),
+    centroid_lat = median(lat)
+  ) %>%
+  ungroup() %>%
+  # get distances to centroid of region
+  rowwise() %>%
+  mutate(dist.mi = distGeo(
+    p1 = c(lon, lat),
+    p2 = c(centroid_lon, centroid_lat)
+  ) / 1609.34) %>%
+  ungroup() %>%
+  # identify central facility
+  group_by(group) %>%
+  arrange(dist.mi) %>%
+  mutate(ord = row_number()) %>%
+  ungroup() %>%
+  mutate(central = ifelse(ord == 1, "central", "Other")) %>%
+  # assign central facility as navigation point (centroid_lon, centroid_lat)
+  group_by(group) %>%
+  arrange(ord) %>%
+  mutate(
+    centroid_lon = ifelse(ord == 1, lon, 0),
+    centroid_lat = ifelse(ord == 1, lat, 0)
+  ) %>%
+  mutate(
+    centroid_lon = min(centroid_lon),
+    centroid_lat = max(centroid_lat)
+  ) %>%
+  ungroup() %>%
+  # get distances for each site to central facility
+  rowwise() %>%
+  mutate(
+    dist.mi =
+      distGeo(
+        p1 = c(lon, lat),
+        p2 = c(centroid_lon, centroid_lat)
+      ) / 1609.34 # convert from meters to miles
+  ) %>%
+  ungroup()
 ```
 
 
 Generate map elements
 ```{r}
-#map elements that repeat across maps    
-  map_airports <- geom_point(data = Airports, aes(x = lon, y = lat), 
-                             size = 3, alpha = .5, color = "black", 
-                             fill = "yellow", shape = 24)
-  
-  map_legend <- theme(legend.position = "bottom",
-                      axis.text = element_blank(),
-                      axis.ticks = element_blank(),
-                      axis.title = element_blank(),
-                      panel.background = element_rect(fill = "white"))
-  
-  all_states <- map_data("state")
-  
-  all_counties <- map_data("county")
+# map elements that repeat across maps
+map_airports <- 
+  geom_point(
+    data = airports, aes(x = lon, y = lat),
+    size = 3, alpha = .5, color = "black",
+    fill = "yellow", shape = 24
+  )
 
-  basemap <- 
-      ggplot() +
-      geom_polygon( data=all_counties, aes(x=long, y=lat, group = group),
-                    colour="grey85", fill="GREY95") +
-      geom_polygon( data=all_states, aes(x=long, y=lat, group = group),
-                    colour="grey60", fill = NA, size = .5)
+map_legend <- 
+  theme(
+    legend.position = "bottom",
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    panel.background = element_rect(fill = "white")
+  )
+
+all_states <- map_data("state")
+
+all_counties <- map_data("county")
+
+basemap <-
+  ggplot() +
+  geom_polygon(
+    data = all_counties, aes(x = long, y = lat, group = group),
+    color = "grey85", fill = "grey95"
+  ) +
+  geom_polygon(
+    data = all_states, aes(x = long, y = lat, group = group),
+    color = "grey60", fill = NA, size = 0.5
+  )
 ```
 
 Generate polygon outlines
 ```{r}
-group_outline <- data.frame(lon = vector("numeric", 0),
-                            lat = vector("numeric", 0),
-                            group = vector(class(Regions$group), length = 0))
-
-for(i in 1:nrow(Regions)){
-  group_points <-  Locations %>% 
-                      filter(group == Regions$group[i]) %>% 
-                      select(lon, lat)
+create_hull <- function(i) {
+  group_points <- locations %>%
+    filter(group == regions$group[i]) %>%
+    select(lon, lat)
   select_hull <- chull(group_points)
   select_hull <- c(select_hull, select_hull[1])
-  
-  group_outline <- rbind(group_outline,
-                         group_points[select_hull, ] %>%
-                          mutate(group = Regions$group[i]))
 
+  group_outline <- rbind(
+    group_outline,
+    group_points[select_hull, ] %>%
+      mutate(group = regions$group[i])
+  )
 }
 
+group_outline <- map_dfr(1:nrow(regions), create_hull)
 ```
 
 
 Show basemap
 ```{r}
-  #Make map
-    basemap +
-    geom_point(data = Locations,
-               aes(lon, lat, color = factor(group), size = value), alpha = .8)+
-    geom_polygon(data = group_outline, 
-                 aes(lon, lat, group = group, 
-                     fill = factor(group)), color = "grey50", alpha = .1) +
-    coord_map() +
-    theme(legend.position = "none", 
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
-          axis.title = element_blank(),
-          panel.background = element_rect(fill = "white")) +
-    ggtitle(paste0(data_title, ": ",
-                   nrow(Regions), " groups, n=", sum(Locations$value), " (uses ",
-                   ifelse(use_group == T, "original groups", "clustering algorithm"), ")"))
-
-    
+# Make map
+basemap +
+  geom_point(
+    data = locations,
+    aes(lon, lat, color = factor(group), size = value), alpha = .8
+  ) +
+  geom_polygon(
+    data = group_outline,
+    aes(lon, lat,
+      group = group,
+      fill = factor(group)
+    ), color = "grey50", alpha = .1
+  ) +
+  coord_map() +
+  theme(
+    legend.position = "none",
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    panel.background = element_rect(fill = "white")
+  ) +
+  ggtitle(paste0(
+    data_title, ": ",
+    nrow(regions), " groups, n=", sum(locations$value), " (uses ",
+    ifelse(use_group == T, "original groups", "clustering algorithm"), ")"
+  ))
 ```
 
 ###Create maps
@@ -216,86 +250,121 @@ Create three maps within each group:
 
 Points are clustered within each region as a guide for the decision making process.
 
-```{r eval = T}
-#for loop to generate maps
-for(i in 1:nrow(Regions)){
+```{r eval = TRUE}
+create_plots <- function(i) {
+  region_loop <-
+    centroid %>% 
+    filter(group == regions$group[i]) %>%
+    left_join(select(locations, id, value), by = "id")
 
-    RegionLoop <- 
-        filter(Centroid, group == Regions$group[i]) %>%
-        left_join(select(Locations, ID, value), by = "ID")
-    
-    #clusters
-      clustersRL <- hclust(dist(select(RegionLoop, lat, lon)), 
-                           method = clustMethod[which_clustMethod])
+  # clusters
+  clusters_loop <- 
+    hclust(
+      dist(select(region_loop, lat, lon)),
+      method = cluster_method[which_cluster_method]
+    )
 
-      RegionLoop$cluster <- cutree(clustersRL, h = mean(clustersRL$height))
-      
-      #table(RegionLoop$cluster)
+  region_loop$cluster <- cutree(clusters_loop, h = mean(clusters_loop$height))
 
-    #creates shortest routes
-      df <- select(RegionLoop, lon,lat)
-      tsp <- TSP(dist(df))
-      tour <- solve_TSP(tsp, method="nearest_insertion", control=list(rep=10))
-      path.tsp <- unname(tour)
-      RegionLoop$Path <- as.integer(tour)
+  # table(region_loop$cluster)
+
+  # creates shortest routes
+  df <- select(region_loop, lon, lat)
+  tsp <- TSP(dist(df))
+  tour <- solve_TSP(tsp, method = "nearest_insertion", control = list(rep = 10))
+  path.tsp <- unname(tour)
+  region_loop$Path <- as.integer(tour)
+
+  # plot(lat~lon, df[path.tsp,], type="b",asp=1)
+
+  # map elements that repeat across maps
+  map_locations <- geom_point(
+    data = region_loop,
+    aes(
+      x = lon, y = lat, size = value,
+      fill = as.factor(cluster)
+    ),
+    alpha = .8, color = "black", shape = 21
+  )
+
+  map_location_central <-
+    geom_point(
+      data = filter(region_loop, central == "central"),
+      aes(lon, lat),
+      color = "red"
+    )
+
+  map_projection <-
+    coord_map(
+      projection = "mercator",
+      xlim = c(min(region_loop$lon) - 1, max(region_loop$lon) + 1),
+      ylim = c(min(region_loop$lat) - 1, max(region_loop$lat) + 1)
+    )
+
+  # show location of group
+  baseplot <-
+    ggplot() + coord_map() +
+    geom_polygon(
+      data = all_states, aes(x = long, y = lat, group = group),
+      color = NA, fill = "grey80", size = .5
+    ) +
+    geom_point(data = region_loop, aes(x = lon, y = lat)) +
+    # map_location_central +
+    theme_nothing()
+
+  # plots 1 & 2
+  plot1 <- # map of distance to most central location
+    basemap + map_projection + map_airports + # ggplot() +
+    geom_leg(
+      data = region_loop,
+      aes(
+        x = lon, xend = centroid_lon,
+        y = lat, yend = centroid_lat
+      ),
+      color = "#E58700", size = 1, alpha = .5
+    ) +
+    geom_leg(
+      data = region_loop,
+      aes(
+        x = lon, xend = centroid_lon,
+        y = lat, yend = centroid_lat
+      ),
+      color = "black", size = .5, alpha = .5
+    ) +
+    map_locations + map_location_central + map_legend +
+    guides(fill = FALSE) +
+    labs(
+      title = paste0(
+        region_loop$group[1],
+        ": ", nrow(region_loop), " sites (avg dist ",
+        round(median(region_loop$dist.mi), 0), " mi.)"
+      ), 
+      size = "Size"
+    )
+
+  plot2 <- # map of shortest routes
+    basemap + map_projection + map_airports +
+    geom_path(
+      data = region_loop[path.tsp, ],
+      aes(x = lon, y = lat), color = "#E58700", size = 1, alpha = .5
+    ) +
+    geom_path(
+      data = region_loop[path.tsp, ],
+      aes(x = lon, y = lat), color = "black", size = .5, alpha = .5
+    ) +
+    map_locations + map_location_central + map_legend +
+    guides(size = FALSE) +
+    labs(
+      title = paste0("(n = ", sum(region_loop$value), ")"),
+      fill = "Cluster"
+    )
   
-    #plot(lat~lon, df[path.tsp,], type="b",asp=1)
+  # put all plots together
+  grid.arrange(baseplot, plot1, plot2, ncol = 3)
+}
 
-    #map elements that repeat across maps    
-      map_locations <- geom_point(data = RegionLoop, 
-                                  aes(x = lon, y= lat, size = value, 
-                                      fill = as.factor(cluster)), 
-                                  alpha = .8, color = "black", shape = 21)
-      
-      map_location_central <- 
-        geom_point(data = filter(RegionLoop, Central == "Central"),
-                   aes(lon, lat),
-                   color = "red")
-      
-      map_projection <- 
-        coord_map(projection="mercator", 
-                  xlim=c(min(RegionLoop$lon)-1, max(RegionLoop$lon)+1),
-                  ylim=c(min(RegionLoop$lat)-1, max(RegionLoop$lat)+1))
-
-    #show location of group    
-    baseplot <- 
-      ggplot() + coord_map() +
-      geom_polygon(data=all_states, aes(x=long, y=lat, group = group),
-                   color = NA, fill = "grey80", size = .5) +
-       geom_point(data = RegionLoop, aes(x = lon, y= lat)) +
-      #map_location_central +
-      theme_nothing()
-
-    #plots 1 & 2
-    plot1 <- #map of distance to most central location
-       basemap + map_projection + map_airports + #ggplot() +
-       geom_leg(data = RegionLoop,
-               aes(x = lon, xend = lon.C,
-                   y = lat, yend = lat.C),
-                color = "#E58700", size = 1, alpha = .5) +
-        geom_leg(data = RegionLoop,
-               aes(x = lon, xend = lon.C,
-                   y = lat, yend = lat.C),
-                color = "black", size = .5, alpha = .5) + 
-        map_locations + map_location_central + map_legend +
-        ggtitle(paste0(RegionLoop$group[1], 
-                       ": ", nrow(RegionLoop), " sites (avg dist ",
-                       round(median(RegionLoop$dist.mi), 0), " mi.)")) 
-        
-    plot2 <- #map of shortest routes
-        basemap + map_projection + map_airports +  
-        geom_path(data = RegionLoop[path.tsp,], 
-                   aes(x=lon, y=lat), color = "#E58700", size = 1, alpha = .5) +
-        geom_path(data = RegionLoop[path.tsp,], 
-                   aes(x=lon, y=lat), color = "black", size = .5, alpha = .5) +  
-        map_locations + map_location_central + map_legend +
-        ggtitle(paste0("(n = ", sum(RegionLoop$value), ")"))
-
-  #put all plots together
-    grid.arrange(baseplot, plot1, plot2,ncol=3)
-
-} #end of for loop
-
+# for loop to generate maps
+map(1:nrow(regions), create_plots)
 ```
 
 ###Useful links
