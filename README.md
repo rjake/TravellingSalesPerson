@@ -1,6 +1,7 @@
 Distances to Centroids & TSP across Groups
 ================
-Jake Riley, 2016
+Jake Riley
+15 November, 2019
 
 ### Set workspace
 
@@ -10,7 +11,7 @@ you can change this to bring in your own data as long as the coordinates are WGS
 
 ``` r
 locations <-
-  read.csv("medschools.csv", stringsAsFactors = FALSE)
+  read.csv("data/medschools.csv", stringsAsFactors = FALSE)
 
 # identify the following variables
 locations$id <- locations$unit_id # the unique identifier for each site
